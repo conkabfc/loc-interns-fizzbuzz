@@ -1,7 +1,15 @@
+const readline = require('readline-sync');
+
 // This is our main function
+function getTarget() {
+    console.log('How far should we go?');
+    let target = parseInt(readline.prompt());
+    return target;
+}
+
 function fizzbuzz() {
 
-    for (let i = 1; i < 4000; i++) {
+    for (let i = 1; i < (target+1); i++) {
         let toLog = "";
 
         // Multiple of 3: Fizz
@@ -43,7 +51,7 @@ function fizzbuzz() {
         // Multiple of 17: Reverse
         if (i % 17 == 0) {
             let tempLog = toLog;
-            if (tempLog.length > 3) {
+            if (isNaN(tempLog)) {
                 toLog = "";
                 while (tempLog.length > 0) {
                     toLog += tempLog.slice(-4);
@@ -59,6 +67,7 @@ function fizzbuzz() {
 
 }
 
+let target = getTarget();
 // Now, we run the main function:
-fizzbuzz();
+fizzbuzz(target);
 
