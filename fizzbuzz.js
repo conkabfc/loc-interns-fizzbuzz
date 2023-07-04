@@ -10,58 +10,52 @@ function getTarget() {
 function fizzbuzz() {
 
     for (let i = 1; i < (target+1); i++) {
-        let toLog = "";
+        let toLog = [];
 
         // Multiple of 3: Fizz
         if (i % 3 == 0) {
-            toLog += "Fizz";
+            toLog.push("Fizz");
         }
 
         // Multiple of 13: Fezz (Before any word beginning 'B')
         if (i % 13 == 0) {
-            toLog += "Fezz";
+            toLog.push("Fezz");
         }
 
         // Multiple of 5: Buzz
         if (i % 5 == 0) {
-            toLog += "Buzz";
+            toLog.push("Buzz");
 
         }
 
         // Multiple of 7: Bang
         if (i % 7 == 0) {
-            toLog += "Bang";
+            toLog.push("Bang");
         }
 
         // None of above: Number
         if (toLog == "") {
-            toLog = i;
+            toLog = [i];
         }
 
         // Multiple of 11: Bong
         if (i % 11 == 0) {
             // Multiple of 13 AND 11: FezzBong
             if (i % 143 == 0) {
-                toLog = "FezzBong";
+                toLog = ["Fezz","Bong"];
             } else {
-                toLog = "Bong";
+                toLog = ["Bong"];
             }
         }
 
         // Multiple of 17: Reverse
         if (i % 17 == 0) {
-            let tempLog = toLog;
-            if (isNaN(tempLog)) {
-                toLog = "";
-                while (tempLog.length > 0) {
-                    toLog += tempLog.slice(-4);
-                    tempLog = tempLog.slice(0, tempLog.length - 4);
-                }
-            }
-            
+            toLog = toLog.reverse();
         }
-
-        console.log(toLog)
+        
+        let logString = "";
+        toLog.forEach(element => logString += element);
+        console.log(logString)
     }
 
 
